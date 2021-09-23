@@ -1,0 +1,14 @@
+{% extends 'prescription/base.html' %}
+{% block content %}
+<div class="cotainer">
+	<h2>Are You Sure To Delete This Gallery ?</h2>
+<form method="post">
+	{% csrf_token %}
+	{{ form.as_p }}
+	<h3><a href="{% url 'detail_hall' hall.id %}">{{ patient.name}}</a></h3>
+	<button class="btn btn-danger">Delete</button>
+</form>
+<br>
+
+</div>
+{% endblock %}

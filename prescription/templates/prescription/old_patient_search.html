@@ -1,0 +1,48 @@
+{% extends 'prescription/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div style="background-color: skyblue;">
+<div class="container py-5 bg- rounded ">
+	
+<h3 class="text-white">Old Patient</h3>
+
+<div class="">
+<form action="{% url 'old_patient_search' %}"> 
+<input type="" name="search_id" class="" placeholder="Patient ID" required>
+<input type="submit" name="submit" value="Search">
+</form>
+</div>
+
+
+<br>
+{% for update in updatep %}
+<form action="{% url 'old_patient_update' update.id %}">
+<div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
+  <div class="card-header">Information ID: {{ update.id }}</div>
+  <div class="card-body">
+    <h4 class="card-title">{{ update.name }}</h4>
+    <p class="card-text">
+    	<strong>
+        Age: {{ update.age_y }}<br>
+				CC: {{ update.cc }}<br>
+				BP: {{ update.bp }}<br/>
+        Date: {{ update.date }}
+        </strong></p>
+        
+  </div>
+  <button class="btn btn-danger" type="submit">View</button>
+</div>
+</form>
+
+
+<!-- </form> -->
+{% endfor %}
+</div>
+</div>
+</div>
+</div>
+
+{% endblock %}
+

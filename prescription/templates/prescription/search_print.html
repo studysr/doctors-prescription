@@ -1,0 +1,48 @@
+{% extends 'prescription/base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+<div class="container-fluid bg-warning py-5 t rounded ">
+	
+<h3>Print Prescription</h3>
+
+<div class="">
+<form action="{% url 'print' %}"> 
+<input type="" name="search_id" class="" placeholder="Patient ID">
+<input type="submit" name="submit" value="Search">
+</form>
+</div>
+
+
+<br>
+{% for update in updatep %}
+<form method="post">
+  {% csrf_token %}
+<div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+  <div class="card-header">Information ID: {{ update.id }}</div>
+  <div class="card-body">
+    <h4 class="card-title">{{ update.name }}</h4>
+    <p class="card-text">
+    	<strong>
+        Age: {{ update.age_y }}<br>
+				CC: {{ update.cc }}<br>
+				BP: {{ update.bp }}
+        </strong></p>
+        
+  </div>
+  <button class="btn btn-info" type="submit">Print</button>
+</div>
+</form>
+
+
+<!-- </form> -->
+{% endfor %}
+</div>
+</div>
+</div>
+</div>
+</div>
+{% endblock %}
+

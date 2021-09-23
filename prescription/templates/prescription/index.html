@@ -1,0 +1,195 @@
+{% extends 'prescription/base.html' %}
+{% load static %}
+
+{% block content %}
+<main role="main">
+
+  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+	
+	     
+
+	<!---carousel setting--->
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+		 <a href="{% url 'create' %}">
+			<img class="d-block w-100" src="{% static 'images/doctorbg.jpg' %}" alt="First slide">
+		 </a>
+        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"><rect width="100%" height="100%" fill="#777"/></svg>
+        <div class="container">
+          <div class="carousel-caption text-left text-white" style="line-height:10px; text-shadow: 5px black;">
+      	<h2>Dr. Laxman Chandra Hore(Babon)</h2>
+      	<h5>M.B.B.S (DU), D.M.U (BTEB)</h5>
+      	<p>M.P.H, Nipson, Dhaka</p>
+      	Post Graduatre Training (Skin & VD)</p>
+      	Medical Officer, Department of Skin & VD<br/>
+      	<p>Mymensingh Medical College, Mymensingh</p>
+
+        {% if user.is_authenticated == False %}
+            <p><a class="btn btn-lg btn-primary" href="{% url 'login' %}" role="button">Login</a></p>
+        {% endif %}
+
+
+   
+
+        
+
+          </div>
+        </div>
+      </div>
+	  
+     <div class="carousel-item">
+	  <a href="#" target="_blank">
+		<img class="d-block w-100" src="{% static 'images/carousel.jpg' %}" alt="2nd slide">
+	  </a>
+        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"><rect width="100%" height="100%" fill="#777"/></svg>
+        <div class="container">
+          <div class="carousel-caption">
+            <h1>Doctor's Prescription App</h1>
+            <p>
+              Sarve the people.
+            </p>
+        {% if user.is_authenticated == False %}
+            <p><a class="btn btn-lg btn-primary" href="{% url 'login' %}" role="button">Login</a></p>
+        {% endif %}
+          </div>
+        </div>
+      </div>
+	  
+      <div class="carousel-item">
+	  <a href="#" target="_blank">
+		<img class="d-block mw-100" src="{% static 'images/josimbg.jpg' %}" alt="3rd slide">
+	  </a>
+        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"><rect width="100%" height="100%" fill="#777"/></svg>
+        <div class="container">
+          <div class="carousel-caption text-right text-success">
+            <h1>JFL Software</h1>
+            <p>We deliver comprehensive programming and web development services with clear results and a clear development process. Leverage our unique, We can build a rich-featured labor management portal, a speedy progressive web app, or even a ecommerce store with Augmented Reality. We deliver comprehensive web development services with clear results and a clear development process.</p>
+            <p>We maintain our software in online.</p>
+            <p> After your web solution is released, we perform continuous and provide general customer support.</p>
+            <p><a class="btn btn-lg btn-primary" href="{% url 'about' %}" role="button">Learn More</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+ <!---carousel setting end-->
+
+
+
+
+
+
+    <!-- START THE FEATURETTES -->
+
+    <hr class="divider">
+
+<div class="container-fluid">
+<!-- Typing Text -->
+      <link rel="stylesheet" href="{% static 'typing/style.css' %}"> 
+        <div class="container typing py-0">
+            <p><span class="typed-text"></span><span class="cursor">&nbsp;</span></p>
+        </div>
+      <script  src="{% static 'typing/script.js' %}"></script>
+<!--end Typing Text-->
+
+
+
+
+    <div class="row ml-3 py-4">
+      <div class="container col-md-5" style="font-family: sans-serif; font-size: 14pt; color: #0000ff;">
+        <h2 class="text-dark">How can make a prescription?</h2>
+        <ul>
+            <li>At first open JFLsoft</li>
+            <li>Login with your user id and password</li>   
+            <li>Then Click on Create New</li>
+            <li>Add details of patient in right format.</li>
+            <li>Save the information</li>
+            <li>You can print this prescription for test or add medicine.</li>
+            <li>After test you will click on prescribe button. </li>
+            <li>Give id from prescription and then search.</li>
+            <li>After search you will get a blank prescription </li>
+            <li>Fill up it in right format.</li>
+            <li>Then save and print final Prescription</li>
+        </ul>
+      </div>
+      <div class="col-md-7">
+              <iframe width="100%" height="410" src="https://www.youtube.com/embed/8e2CyE3Y_CM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+  </div>
+</br>
+<br/>
+    <hr class="divider">
+
+
+
+
+
+
+<div class="row ml-3 py-4">
+
+      <div class="col-md-6">
+              <iframe width="100%" height="410" src="https://www.youtube.com/embed/hCzNwbKzZf0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="container col-md-5" style="font-family: sans-serif; font-size: 12pt; color:#000000;">
+        <h2 class="text-dark">Why this JFL software?</h2>
+        <ul>
+            <li>Computerized prescribing system of JFL soft.  is One of the best Automated Prescription Software.</li>
+            <li>We can change any kinds of design and system of this software on your demand.</li>
+            <li>Doctors can now prepare Prescription within 20-60 seconds using JFL Software. More patients can be prescribed within a specific time.</li>
+            <li>Well formatted Prescription,, no hassle of bad handwriting.</li>
+            <li>Patients history will be recorded forever and can be checked anytime.</li>
+            <li>No need for entry or write the same things again and again.</li>
+            <li>A lot of analytical & statistical reports will make doctors think and decide more confidently.</li>
+            <li>You can use this software in online system as webapp. And you can use in offline.</li>
+            <li>This software is written in python programming language. what is a best coding language in this time.</li>
+            <li>So, why not JFL soft? </li>
+
+
+        </ul>
+      </div>
+  </div>
+</br>
+<br/>
+    <hr class="divider">
+
+
+
+
+
+<div class="row text-white py-5" style="background-color: black;"> 
+   <div class="col-md-4">
+    <img src="{% static 'img/jfllogo.png' %}" style="width: 100%">
+  </div>
+  
+
+
+  <div class="col-md-8">
+    <h1 class="">Feature of JFLsoft's Prescription software</h1> 
+        <p>Imagine a personalized and safe prescribing system that allows to easily create and print prescriptions quickly and efficiently that makes life more productive.&nbsp;</p><p>The electronic prescription writing software will also craft relationships between physician, patients and pharmacies with the help of automated prescription writing and efficient patient management system.&nbsp;</p><p>Our software engineers made it possible under the supervision of specialized and experienced doctors by combining essential features and ease of use techniques.</p>
+        <p>The software now has rich features for prescription writing based upon doctor’s specialty, patient management, drug directory with generic details &amp; Brand name editing, appointments management, &nbsp;re-printing prescription, statistical analytics reports etc.<br></p><h3>Importance of using computerized prescribing system:</h3><ul><li><b>JFLsoft</b>( One of the best Automated Prescription Software in the market ) will increase doctors efficiency dramatically.<br></li><li>Doctors can now prepare Prescription within 20-60 seconds using JFL Software. More patients can be prescribed within a specific time.<br></li><li>Well formatted Prescription, no hassle of bad handwriting.<br></li><li>No need for entry/write the same things again and again.<br></li><li>Patients history will be recorded forever and can be checked anytime for any types of analysis.<br></li><li>Patients Appointment Serial entry and money collection will be smoother than ever.<br></li><li>A lot of analytical &amp; statistical reports will make doctors think and decide more confidently.</li></ul><h3>Why Choose <b>JFLsoft</b>?</h3><ul><li>Doctors Personalize/Custom Prescription Format<br></li><li>10+ Prescription Format (Medicine, Surgery,&nbsp;Eye, ENT, pediatrics etc.)<br></li><li>No need for an internet&nbsp;connection<br></li><li>Drug Listed with Generic name<br></li><li class="text-success">You can use this software in online system as webapp.<br></li></ul>
+      </div>
+    </div>
+    </div>
+
+
+    <hr class="divider">
+  </div>
+</div>
+</main>
+{% endblock %}
+
+
+

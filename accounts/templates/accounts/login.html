@@ -1,0 +1,42 @@
+{% extends 'prescription/base.html' %}
+{% load static %}
+{% block content %}
+
+<style>
+.bg {
+  background-image: url('{% static 'images/doctorbg.jpg' %}');
+  background-position: center;
+  background-size: auto;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+</style>
+
+<body class="bg">
+<div class="container py-5">
+	<div class="container">
+		</br><h5 style="color: red; border: 2px solid red; border-radius: 5px; width: 210px;">
+		{% if error %}
+			{{ error }}
+		{% endif %}
+	    </h5>
+		<h1>Login</h1>
+
+	{% if user.is_authenticated %}
+		<h3> You are alrady logedin.</h3>
+		<a class="btn btn-danger" href="{% url 'logout' %}" class="">Logout</a>
+		<a class="btn btn-success" href="{% url 'create' %}" class="">Home</a>
+	{% else %}
+		  <form method="POST" action="{% url 'login' %}">
+			{% csrf_token %}
+			Username:<br/><input type="text" name="username" /> <br/>
+			Password:<br/><input type="password" name="password" /> <br/>
+			<br/>
+			<input class="btn btn-primary" type="submit" value="Login"/>
+		  </form>
+	{% endif %}
+	</div>
+</div>
+</body>
+
+{% endblock %}

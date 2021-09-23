@@ -1,0 +1,199 @@
+
+{% load widget_tweaks %}
+{% load static %}
+
+
+  <script src="{% static 'assets/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'assets/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <link href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+  <style type="text/css">
+  	
+.box{
+	background-color: #e8fcfc;
+}
+.main-box{
+	font-family: Kalpurush;
+}
+  </style> 
+
+
+
+<div class="container main-box">
+<!---First container-->
+    <div class="row mt-3 box">
+      <div class="col-sm-12" style=" background-color: green; color: white; text-align: center;"><h3>চর্ম, যৌন, ও সেক্স, এলার্জি, ব্রুণ ও মেছতা রোগে বিশেষজ্ঞ</h3></div>
+    </div>
+
+
+<!---2nd container-->
+    <div class="row mt-1 box">
+      <div class="col-sm-6" style="line-height: 5px;">
+      	<h2>ডাঃ লক্ষণ চন্দ্র হোড় (বাবন)</h2>
+      	<h5>এম.বি.বি.এস(ডি.ইউ), ডি.এম.ইউ (বি.টি.ই.বি)</h5>
+      	<p>এম.পি.এইট, নিপসম, ঢাকা</p>
+      	<p>পোস্ট গ্র্যাজুয়েট ট্রেনিং (চর্ম, যৌন, ও সেক্স, এলার্জি, ব্রুণ ও মেছতা)</p>
+      	<p>মেডিকেল অফিসার, চর্ম, যৌন, ও সেক্স রোগ বিভাগ</p>
+      	<p>ময়মনসিংহ মেডিকেল কলেজ হাসপাতাল, ময়মনসিংহ।</p>
+      </div>
+      <div class="col-sm-6" style="text-align: right; line-height: 5px;">
+      	<h2>Dr. Laxman Chandra Hore(Babon)</h2>
+      	<h5>M.B.B.S (DU), D.M.U (BTEB)</h5>
+      	<p>M.P.H, Nipson, Dhaka</p>
+      	<p>Post Graduatre Training (Skin & VD)</p>
+      	<p>Medical Officer, Department of Skin & VD</p>
+      	<p>Mymensingh Medical College, Mymensingh</p>
+  	  </div>
+    </div>
+
+
+<!---3rd container-->
+    <div class="row mt-2 box" style=" background-color: green; color: white; font-size: 20px; text-align: center;">
+      <div class="col-" style="width:13%;">রোগীর নামঃ</div>
+      <div class="col-sm-4" style=" background-color: white; color: black; text-align: left;"><b>{{ patient.name }}</b></div>
+      <div class="col-" style="width: 6%;">বয়সঃ</div>
+      <div class="col-sm-2" style=" background-color: white; color: black; text-align: left;">
+        {% if patient.age_y %}
+        <b>{{ patient.age_y}} Year</b>
+        {% endif %}
+
+        {% if patient.age_m %}
+    <b>{{ patient.age_m}} month</b>
+    {% endif %}
+
+
+    {% if patient.age_d %}
+    <b>{{ patient.age_d}} day</b>
+    {% endif %}
+
+      </div>
+      <div class="col-sm-" style="width:8%;">তারিখঃ </div>
+      <div class="col-" style=" background-color: white; color: black; text-align: left; width: 14%;"><b> {{ patient.date }}</b></div>
+      <div class="col-" style="width:3%;">ID: </div>
+      <div class="col-sm" style=" background-color: white; color: black; text-align: left;width:5%;"><b>{{ patient.id }}</b></div>
+    </div>
+
+
+<!---Left side-->
+    <div class="row mt-2 box" style="height: ;">
+      <div class="col-sm-3" style="font-size: 16pt;">
+      	<u>CC</u>
+      	<p>{{ patient.cc }}</p>
+		<u>OE</u>
+		<p>{{ patient.oe }}</p>
+		<p>Pulse : {{ patient.pulse }}</p>
+		<p>BP : {{patient.bp}}</p>
+
+		
+      	<table style="font-size: 16pt;">
+      		<tr>
+		        <th colspan="12"><u>Advice</u></th>
+		      </tr>
+      	  {% for order_item in patient.test.all %}
+		      <tr>
+		        <td>{{ forloop.counter }}. </td>
+		        <td> {{ order_item.title }}</td>
+		      </tr>
+		  {% endfor %}
+		</table>
+
+		<br/>
+    Diagonosis:
+		<p>{{medicine.test_result}}</p>
+      </div>
+
+<!---Right side-->
+
+	<div class="col-sm-2" style="text-align:left; font-size:30pt; font-family:Magneto; background-color: #f2e6ff;">
+    Rx
+  </div>
+
+
+	<div class="col-sm-7" style="height:1000px; font-size:16pt; background-color: #f2e6ff;">
+      <div class="row mt-5">
+            <div class="form-group mt-3">
+              {% if medicine.med1 %}
+              {{medicine.med1}}<br/>
+              &emsp; &emsp;{{medicine.rule1}}
+              <br/>
+              {% endif %}
+
+              {% if medicine.med2 %}
+              {{medicine.med2}}<br/>
+              &emsp; &emsp;{{medicine.rule2}}
+              <br/>
+              {% endif %}
+
+              {% if medicine.med3 %}
+              {{medicine.med3}}<br/>
+              &emsp; &emsp;{{medicine.rule3}}
+              <br/>
+              {% endif %}
+
+              {% if medicine.med4 %}
+              {{medicine.med4}}<br/>
+              &emsp; &emsp;{{medicine.rule4}}
+              <br/>
+              {% endif %}
+
+              {% if medicine.med5 %}
+              {{medicine.med5}}<br/>
+              &emsp; &emsp;{{medicine.rule5}}
+              <br/>
+              {% endif %}
+
+              {% if medicine.med6 %}
+              {{medicine.med6}}<br/>
+              &emsp; &emsp;{{medicine.rule6}}
+              <br/>
+              {% endif %}
+              
+              {% if medicine.med7 %}
+              {{medicine.med7}}<br/>
+              &emsp; &emsp;{{medicine.rule7}}
+              <br/>
+              {% endif %}
+
+              {% if medicine.med8 %}
+              {{medicine.med8}}<br/>
+              &emsp; &emsp;{{medicine.rule8}}
+              {% endif %}
+
+              {% if medicine.med9 %}
+              {{medicine.med9}}<br/>
+              &emsp; &emsp;{{medicine.rule9}}
+              <br/>
+              {% endif %}
+
+              {% if medicine.med10 %}
+              {{medicine.med10}}<br/>
+              &emsp; &emsp;{{medicine.rule10}}
+              {% endif %}
+
+            </div>
+      </div>
+  	</div>
+ </div>
+
+<b>চেম্বারঃ</b>
+<!--Footer-->
+	<div class="row box">
+		<div class="col-sm-6"><h1>দিশা হেলথ্ সেন্টার</h1><p style="line-height:1px;">হজেরা কমপ্লেক্স, ৩২৪/২(২য় তলা)</p></div>
+		<div class="col-sm-6 text-right">
+			পরবর্তী সাক্ষাতঃ {{medicine.next_visit}} দিন পর। <br/>
+			প্রতিদিনঃ দুপুর ৩ টা থেকে রাত ৯ টা
+		</div>
+	</div>
+<hr/>
+  <div class="row box">
+    <div class="col-sm-6">&copy; 2020   Programming and software developed by <code> jflsoftbd@gmail.com</code></div>
+    <div class="col-sm-6 text-right">
+    <input class="btn btn-primary" type="button" value="Print" onClick="window.print()"> &nbsp;
+    <a class="btn btn-primary" href="{% url 'create' %}">New</a>
+</form>
+    </div>
+  </div>
+
+
+
+</div>

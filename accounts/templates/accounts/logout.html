@@ -1,0 +1,24 @@
+{% extends 'prescription/base.html' %}
+{% load static %}
+{% block content %}
+
+<style>
+.bg {
+  background-image: url('{% static 'images/pathology.jpg' %}');
+  background-position: center;
+  background-size: auto;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+</style>
+
+	
+<div class="container bg">
+	<div class="container mt-5">
+	    <h1 style="color: red; border: 2px solid red; border-radius: 5px; width: 300px;">You are Logout</h1><br>
+		<h3><a href="{% url 'login' %}" class="nav-link">Login again</a></h3>
+	</div>
+</div>
+
+
+{% endblock %}

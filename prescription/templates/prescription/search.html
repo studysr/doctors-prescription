@@ -1,0 +1,47 @@
+{% extends 'prescription/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div style="background-color: skyblue;">
+<div class="container py-5 bg- rounded ">
+	
+<h3>Make Priscription</h3>
+<h3>{{ msg }}</h3>
+<div class="">
+<form action="{% url 'search' %}">
+<input type="" name="search_id" class="" placeholder="Payment ID">
+<input type="submit" name="submit" value="Search">
+</form>
+</div>
+
+
+<br>
+{% for update in updatep %}
+<form action="{% url 'add_medicine' update.id %}">
+<div class="card text-white bg-success mb-3" style="max-width: 18rem;">
+  <div class="card-header">Information ID: {{ update.id }}</div>
+  <div class="card-body">
+    <h4 class="card-title">{{ update.name }}</h4>
+    <p class="card-text">
+    	<strong>
+        		Age: {{ update.age_y }}<br>
+				CC: {{ update.cc }}<br>
+				BP: {{ update.bp }}
+        </strong></p>
+        
+  </div>
+  <button class="btn btn-warning" type="submit">Edit</button>
+</div>
+
+
+
+<!-- </form> -->
+{% endfor %}
+</div>
+</div>
+</div>
+</div>
+</div>
+{% endblock %}
+

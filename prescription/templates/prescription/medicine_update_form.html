@@ -1,0 +1,219 @@
+
+{% extends 'prescription/base.html' %}
+{% load widget_tweaks %}
+{% load static %}
+
+{% block content %}
+  <script src="{% static 'assets/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'assets/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <link href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+  <style type="text/css">
+  	
+.box{
+	background-color: #e8fcfc;
+}
+.main-box{
+	font-family: Kalpurush;
+}
+  </style> 
+
+
+
+<div class="container main-box">
+<!---First container-->
+    <div class="row mt-3 box">
+      <div class="col-sm-12" style=" background-color: green; color: white; text-align: center;"><h3>চর্ম, যৌন, ও সেক্স, এলার্জি, ব্রুণ ও মেছতা রোগে বিশেষজ্ঞ</h3></div>
+    </div>
+
+
+<!---2nd container-->
+    <div class="row mt-1 box">
+      <div class="col-sm-6" style="line-height: 5px;">
+      	<h2>ডাঃ লক্ষণ চন্দ্র হোড় (বাবন)</h2>
+      	<h5>এম.বি.বি.এস(ডি.ইউ), ডি.এম.ইউ (বি.টি.ই.বি)</h5>
+      	<p>এম.পি.এইট, নিপসম, ঢাকা</p>
+      	<p>পোস্ট গ্র্যাজুয়েট ট্রেনিং (চর্ম, যৌন, ও সেক্স, এলার্জি, ব্রুণ ও মেছতা)</p>
+      	<p>মেডিকেল অফিসার, চর্ম, যৌন, ও সেক্স রোগ বিভাগ</p>
+      	<p>ময়মনসিংহ মেডিকেল কলেজ হাসপাতাল, ময়মনসিংহ।</p>
+      </div>
+      <div class="col-sm-6" style="text-align: right; line-height: 5px;">
+      	<h2>Dr. Laxman Chandra Hore(Babon)</h2>
+      	<h5>M.B.B.S (DU), D.M.U (BTEB)</h5>
+      	<p>M.P.H, Nipson, Dhaka</p>
+      	<p>Post Graduatre Training (Skin & VD)</p>
+      	<p>Medical Officer, Department of Skin & VD</p>
+      	<p>Mymensingh Medical College, Mymensingh</p>
+  	  </div>
+    </div>
+
+
+<!---3rd container-->
+    <div class="row mt-2 box" style=" background-color: green; color: white; font-size: 20px; text-align: center;">
+      <div class="col-" style="width: 100px;">রোগীর নামঃ</div>
+      <div class="col-sm-4" style=" background-color: white; color: black; text-align: left;"><b>
+{% render_field form.name class="form-control-sm" placeholder="Name" style="width:300px;" %}
+      {{ patient.name }}</b></div>
+      <div class="col-" style="width: 60px;">বয়সঃ</div>
+      <div class="col-sm-2" style=" background-color: white; color: black; text-align: left;">
+      	{% if patient.age_y %}
+      	<b>{{ patient.age_y}} Year</b>
+      	{% endif %}
+
+      	{% if patient.age_m %}
+		<b>{{ patient.age_m}} month</b>
+		{% endif %}
+
+
+		{% if patient.age_d %}
+		<b>{{ patient.age_d}} day</b>
+		{% endif %}
+
+      </div>
+      <div class="col-sm-1" style="">তারিখঃ </div>
+      <div class="col-" style=" background-color: white; color: black; text-align: left; width: 120px;"><b> {{ patient.date }}</b></div>
+      <div class="col-sm-1">ID: </div>
+      <div class="col-sm-1" style=" background-color: white; color: black; text-align: left;"><b>{{ patient.id }}</b></div>
+    </div>
+
+
+<!---Left side-->
+    <div class="row mt-2 box" style="height: ;">
+      <div class="col-sm-3" style="font-size: 16pt;">
+      	<u>CC</u>
+      	<p>{{ patient.cc }}</p>
+		<u>OE</u>
+		<p>{{ patient.oe }}</p>
+		<p>Pulse : {{ patient.pulse }}</p>
+		<p>BP : {{patient.bp}}</p>
+
+		
+      	<table style="font-size: 16pt;">
+      		<tr>
+		        <th colspan="12"><u>Advice</u></th>
+		      </tr>
+      	  {% for order_item in patient.test.all %}
+		      <tr>
+		        <td>{{ forloop.counter }}. </td>
+		        <td> {{ order_item.title }}</td>
+		      </tr>
+		  {% endfor %}
+		</table>
+
+		<br/>
+
+<form form method="POST">
+		<p>{% render_field form.test_result class="form-control" placeholder="Test Results" %}</p>
+      </div>
+
+
+
+<!---Right side Add Medicine Start-->
+	<div class="form-group col-sm-9" style="text-align:; background-color: #f2e6ff;">
+		{% csrf_token %}
+		<div class="row">
+	        <div class="col-sm-5 mt-3">
+                {% render_field form.med1 class="form-control" placeholder="Medicine" %}
+            </div>
+	        <div class="col-sm-7 mt-3" style="margin-left: -2%;">
+                {% render_field form.rule1 class="form-control" placeholder="Rule" %}
+            </div>
+        </div>
+		<div class="row">
+	        <div class="col-sm-5 mt-1">
+                {% render_field form.med2 class="form-control" placeholder="Medicine" %}
+            </div>
+	        <div class="col-sm-7 mt-1" style="margin-left: -2%;">
+                {% render_field form.rule2 class="form-control" placeholder="Rule" %}
+            </div>
+        </div>
+		<div class="row">
+	        <div class="col-sm-5 mt-1">
+                {% render_field form.med3 class="form-control" placeholder="Medicine" %}
+            </div>
+	        <div class="col-sm-7 mt-1" style="margin-left: -2%;">
+                {% render_field form.rule3 class="form-control" placeholder="Rule" %}
+            </div>
+        </div>
+		<div class="row">
+	        <div class="col-sm-5 mt-1">
+                {% render_field form.med4 class="form-control" placeholder="Medicine" %}
+            </div>
+	        <div class="col-sm-7 mt-1" style="margin-left: -2%;">
+                {% render_field form.rule4 class="form-control" placeholder="Rule" %}
+            </div>
+        </div>
+		<div class="row">
+	        <div class="col-sm-5 mt-1">
+                {% render_field form.med5 class="form-control" placeholder="Medicine" %}
+            </div>
+	        <div class="col-sm-7 mt-1" style="margin-left: -2%;">
+                {% render_field form.rule5 class="form-control" placeholder="Rule" %}
+            </div>
+        </div>
+		<div class="row">
+	        <div class="col-sm-5 mt-1">
+                {% render_field form.med6 class="form-control" placeholder="Medicine" %}
+            </div>
+	        <div class="col-sm-7 mt-1" style="margin-left: -2%;">
+                {% render_field form.rule6 class="form-control" placeholder="Rule" %}
+            </div>
+        </div>
+		<div class="row">
+	        <div class="col-sm-5 mt-1">
+                {% render_field form.med7 class="form-control" placeholder="Medicine" %}
+            </div>
+	        <div class="col-sm-7 mt-1" style="margin-left: -2%;">
+                {% render_field form.rule7 class="form-control" placeholder="Rule" %}
+            </div>
+        </div>
+		<div class="row">
+	        <div class="col-sm-5 mt-1">
+                {% render_field form.med8 class="form-control" placeholder="Medicine" %}
+            </div>
+	        <div class="col-sm-7 mt-1" style="margin-left: -2%;">
+                {% render_field form.rule8 class="form-control" placeholder="Rule" %}
+            </div>
+        </div>
+		<div class="row">
+	        <div class="col-sm-5 mt-1">
+                {% render_field form.med9 class="form-control" placeholder="Medicine" %}
+            </div>
+	        <div class="col-sm-7 mt-1" style="margin-left: -2%;">
+                {% render_field form.rule9 class="form-control" placeholder="Rule" %}
+            </div>
+        </div>
+		<div class="row">
+	        <div class="col-sm-5 mt-1">
+                {% render_field form.med10 class="form-control" placeholder="Medicine/Advices" %}
+            </div>
+	        <div class="col-sm-7 mt-1" style="margin-left: -2%;">
+                {% render_field form.rule10 class="form-control" placeholder="Rule/Advices" %}
+            </div>
+        </div>
+  	</div>
+<!---End Right side Add Medicine Start-->
+ </div>
+
+
+
+
+<b>চেম্বারঃ</b>
+<!--Footer-->
+	<div class="row box">
+		<div class="col-sm-6"><h1>দিশা হেলথ্ সেন্টার</h1></div>
+		<div class="col-sm-6 text-right">
+			পরবর্তী সাক্ষাতঃ {% render_field form.next_visit class="" placeholder="0" %} দিন পর। <br/>
+			প্রতিদিনঃ দুপুর ৩ টা থেকে রাত ৯ টা
+
+		<input class="btn btn-primary" type="submit" name="submit" value="Save">
+</form>
+
+
+		</div>
+
+	</div>
+</div>
+
+
+{% endblock %}
